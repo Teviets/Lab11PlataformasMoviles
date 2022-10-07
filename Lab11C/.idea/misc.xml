@@ -3,6 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Git1/Lab11PlataformasMoviles/Lab11C/app/src/main/res/layout/fragment_character_details.xml" value="0.25" />
+        <entry key="..\:/Git1/Lab11PlataformasMoviles/Lab11C/app/src/main/res/layout/fragment_character_list.xml" value="0.25" />
+        <entry key="..\:/Git1/Lab11PlataformasMoviles/Lab11C/app/src/main/res/layout/fragment_login.xml" value="0.25" />
+        <entry key="..\:/Git1/Lab11PlataformasMoviles/Lab11C/app/src/main/res/layout/recycler_item_character.xml" value="0.25" />
+        <entry key="..\:/Git1/Lab11PlataformasMoviles/Lab11C/app/src/main/res/menu/character_details_optiondb_menu.xml" value="0.25" />
+        <entry key="..\:/Git1/Lab11PlataformasMoviles/Lab11C/app/src/main/res/menu/sort_menu.xml" value="0.25" />
         <entry key="..\:/Git1/Laboratorio_10_PlataformasM/app/src/main/res/layout/fragment_character_details.xml" value="0.2" />
         <entry key="app/src/main/res/drawable-v24/ic_downloading.xml" value="0.1775" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.16458333333333333" />

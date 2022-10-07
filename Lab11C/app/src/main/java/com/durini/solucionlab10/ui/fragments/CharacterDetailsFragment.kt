@@ -4,20 +4,26 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
+import androidx.room.Room
 import coil.load
 import coil.request.CachePolicy
 import coil.transform.CircleCropTransformation
 import com.durini.solucionlab10.R
 import com.durini.solucionlab10.datasource.api.RetrofitInstance
+import com.durini.solucionlab10.datasource.local_source.DataBase
 import com.durini.solucionlab10.datasource.model.Character
 import com.durini.solucionlab10.datasource.model.LoadCharacter
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -34,6 +40,7 @@ class CharacterDetailsFragment : Fragment(R.layout.fragment_character_details) {
     private lateinit var imageCharacter: ImageView
     private lateinit var btnSave: Button
     private lateinit var toolbar: MaterialToolbar
+    private lateinit var database: DataBase
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -49,6 +56,11 @@ class CharacterDetailsFragment : Fragment(R.layout.fragment_character_details) {
             imageCharacter = findViewById(R.id.image_characterDetails)
             btnSave = findViewById(R.id.loadButton)
             toolbar = findViewById(R.id.toolbar_characterDetails)
+            database = Room.databaseBuilder(
+                requireContext(),
+                DataBase::class.java,
+                "dbName"
+            ).build()
 
         }
 
@@ -58,6 +70,36 @@ class CharacterDetailsFragment : Fragment(R.layout.fragment_character_details) {
     }
 
     private fun setListener() {
+        toolbar.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId){
+                R.id.updateChar_item -> {
+                    CoroutineScope(Dispatchers.IO).launch {
+                        val x = database.characterDao().getLoadCharacter(args.id)
+                        database.characterDao().update(
+                            LoadCharacter(
+                                id = x.id,
+                                name = x.name,
+                                status = x.status,
+                                species = x.species,
+                                gender = x.gender,
+                                image = x.image,
+                                origin = x.origin,
+                                episode = x.episode
+                            )
+                        )
+                    }
+                    true
+                }
+                R.id.deleteCharDB_item -> {
+                    CoroutineScope(Dispatchers.IO).launch {
+                        database.characterDao().deleteCharacter(args.id)
+                    }
+                    true
+                }
+                else -> true
+            }
+
+        }
         btnSave.setOnClickListener {
 
         }

@@ -8,8 +8,11 @@ interface LoadCharacterDao {
     @Query("SELECT * FROM LoadCharacter")
     suspend fun getAllLoadCharacters():List<LoadCharacter>
 
-    @Query("SELECT * FROM LoadCharacter WHERE idDB = :id")
+    @Query("SELECT * FROM LoadCharacter WHERE id = :id")
     suspend fun getLoadCharacter(id: Int): LoadCharacter
+
+    @Query("DELETE FROM LoadCharacter WHERE id = :id")
+    suspend fun deleteCharacter(id: Int)
 
     @Insert
     suspend fun createLoadCharacter(NewCharacter: LoadCharacter)

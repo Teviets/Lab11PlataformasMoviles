@@ -68,6 +68,13 @@ class CharacterListFragment : Fragment(R.layout.fragment_character_list), Charac
     private fun setListeners() {
         toolbar.setOnMenuItemClickListener { menuItem ->
             when(menuItem.itemId) {
+                R.id.deleteDB_item -> {
+                    CoroutineScope(Dispatchers.IO).launch {
+                        database.characterDao().deleteAll()
+                    }
+                    true
+                }
+
                 R.id.menu_item_asc -> {
                     characters.sortBy { character -> character.name }
                     adapter.notifyDataSetChanged()
