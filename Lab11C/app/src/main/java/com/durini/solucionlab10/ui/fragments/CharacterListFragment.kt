@@ -136,13 +136,13 @@ class CharacterListFragment : Fragment(R.layout.fragment_character_list), Charac
         }
     }
 
-    override fun onItemClicked(character: Character) {
+    /*override fun onItemClicked(character: Character) {
         val action = CharacterListFragmentDirections.actionCharacterListFragmentToCharacterDetailsFragment(
             character.id.toInt()
         )
 
         requireView().findNavController().navigate(action)
-    }
+    }*/
     fun laApi(){
         RetrofitInstance.api.getCharacters().enqueue(object: Callback<CharactersResponse> {
             override fun onResponse(
@@ -151,7 +151,23 @@ class CharacterListFragment : Fragment(R.layout.fragment_character_list), Charac
             ) {
                 if (response.isSuccessful) {
                     val res = response.body()?.results
-                    setupRecycler(res ?: mutableListOf())
+                    val misChar = mutableListOf<LoadCharacter>()
+                    if (res != null){
+                        for (elem in res){
+                            val x = LoadCharacter(
+                                id = elem.id,
+                                name = elem.name,
+                                status = elem.status,
+                                species = elem.species,
+                                gender = elem.gender,
+                                image = elem.image,
+                                origin = elem.origin.toString(),
+                                episode = elem.episode.size
+                            )
+                            misChar.add(x)
+                        }
+                    }
+                    setupRecycler(misChar ?: mutableListOf())
                 }
             }
 
@@ -160,6 +176,14 @@ class CharacterListFragment : Fragment(R.layout.fragment_character_list), Charac
             }
 
         })
+    }
+
+    override fun onItemClicked(charact: LoadCharacter) {
+        requireView().findNavController().navigate(
+            CharacterListFragmentDirections.actionCharacterListFragmentToCharacterDetailsFragment(
+                id = charact.id.toInt() ?: -1
+            )
+        )
     }
 
 }
