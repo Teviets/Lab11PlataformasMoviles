@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.CharacterDetailsFragment">
+
+ <com.google.android.material.appbar.MaterialToolbar
+     android:id="@+id/toolbar_characterDetails"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintTop_toTopOf="parent"
+     />
+
+   <ImageView
+       android:id="@+id/image_characterDetails"
+       android:layout_width="@dimen/avatar_big_size"
+       android:layout_height="@dimen/avatar_big_size"
+       android:layout_marginTop="@dimen/margin_medium"
+       app:layout_constraintTop_toBottomOf="@id/toolbar_characterDetails"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       tools:srcCompat="@tools:sample/avatars"
+       />
+
+ <com.google.android.material.textfield.TextInputLayout
+     android:id="@+id/nameEditText"
+     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+     android:layout_width="0dp"
+     android:layout_height="wrap_content"
+     android:layout_marginHorizontal="@dimen/margin_medium"
+     android:hint="@string/nameLoadCharacter"
+     android:layout_marginBottom="@dimen/margin_large"
+     android:layout_marginVertical="@dimen/margin_xs"
+     app:layout_constraintBottom_toTopOf="@+id/speciesEditText"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintStart_toStartOf="parent">
+
+  <com.google.android.material.textfield.TextInputEditText
+      android:layout_width="match_parent"
+      android:layout_height="match_parent" />
+ </com.google.android.material.textfield.TextInputLayout>
+
+ <com.google.android.material.textfield.TextInputLayout
+     android:id="@+id/speciesEditText"
+     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+     android:layout_width="0dp"
+     android:layout_height="wrap_content"
+     android:layout_marginHorizontal="@dimen/margin_medium"
+     android:hint="@string/speciesLoadCharacter"
+     android:layout_marginVertical="@dimen/margin_xs"
+     app:layout_constraintBottom_toTopOf="@+id/statusEditText"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintStart_toStartOf="parent">
+
+  <com.google.android.material.textfield.TextInputEditText
+      android:layout_width="match_parent"
+      android:layout_height="match_parent" />
+ </com.google.android.material.textfield.TextInputLayout>
+
+ <com.google.android.material.textfield.TextInputLayout
+     android:id="@+id/statusEditText"
+     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+     android:layout_width="0dp"
+     android:layout_height="wrap_content"
+     android:layout_marginHorizontal="@dimen/margin_medium"
+     android:hint="@string/statusLoadCharacter"
+     android:layout_marginVertical="@dimen/margin_xs"
+     app:layout_constraintBottom_toTopOf="@+id/genderEditText"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintStart_toStartOf="parent">
+
+  <com.google.android.material.textfield.TextInputEditText
+      android:layout_width="match_parent"
+      android:layout_height="match_parent" />
+ </com.google.android.material.textfield.TextInputLayout>
+
+ <com.google.android.material.textfield.TextInputLayout
+     android:id="@+id/genderEditText"
+     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+     android:layout_width="0dp"
+     android:layout_height="wrap_content"
+     android:layout_marginHorizontal="@dimen/margin_medium"
+     android:hint="@string/genderLoadCharacter"
+     android:layout_marginVertical="@dimen/margin_xs"
+     app:layout_constraintBottom_toTopOf="@+id/originEditText"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintStart_toStartOf="parent">
+
+  <com.google.android.material.textfield.TextInputEditText
+      android:layout_width="match_parent"
+      android:layout_height="match_parent" />
+ </com.google.android.material.textfield.TextInputLayout>
+
+ <com.google.android.material.textfield.TextInputLayout
+     android:id="@+id/originEditText"
+     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+     android:layout_width="0dp"
+     android:layout_height="wrap_content"
+     android:layout_marginHorizontal="@dimen/margin_medium"
+     android:hint="@string/originLoadCharacter"
+     android:layout_marginVertical="@dimen/margin_xs"
+     app:layout_constraintBottom_toTopOf="@+id/episodesEditText"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintStart_toStartOf="parent">
+
+  <com.google.android.material.textfield.TextInputEditText
+      android:layout_width="match_parent"
+      android:layout_height="match_parent" />
+ </com.google.android.material.textfield.TextInputLayout>
+
+ <com.google.android.material.textfield.TextInputLayout
+     android:id="@+id/episodesEditText"
+     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+     android:layout_width="0dp"
+     android:layout_height="wrap_content"
+     android:layout_marginHorizontal="@dimen/margin_medium"
+     android:hint="@string/episodesLoadCharacter"
+     android:layout_marginVertical="@dimen/margin_xs"
+     app:layout_constraintBottom_toTopOf="@+id/loadButton"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintStart_toStartOf="parent">
+
+  <com.google.android.material.textfield.TextInputEditText
+      android:layout_width="match_parent"
+      android:layout_height="match_parent" />
+ </com.google.android.material.textfield.TextInputLayout>
+
+ <Button
+     android:id="@+id/loadButton"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_marginVertical="@dimen/margin_large"
+     android:text="@string/Load"
+     app:layout_constraintBottom_toBottomOf="parent"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintTop_toBottomOf="@+id/image_characterDetails"
+     app:layout_constraintVertical_bias="0.837" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
