@@ -47,7 +47,7 @@ class CharacterAdapter(
                 textStatus.text = status
             }
             layoutCharacter.setOnClickListener {
-                listener.onItemClicked(LoadCharacter)
+                listener.onItemClicked(character)
             }
         }
 
